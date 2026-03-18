@@ -1,296 +1,277 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rehab Peroné 🦵</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f5f5f5; min-height: 100vh; display: flex; justify-content: center; padding: 1rem; }
+  #root { width: 100%; max-width: 480px; }
+  button, textarea { font-family: inherit; }
+</style>
 </head>
 <body>
-<p class="p1"><br></p>
-<p class="p1"><br></p>
-<p class="p1"><br></p>
-<p class="p2">&lt;!DOCTYPE html&gt;</p>
-<p class="p2">&lt;html lang="es"&gt;</p>
-<p class="p2">&lt;head&gt;</p>
-<p class="p2">&lt;meta charset="UTF-8" /&gt;</p>
-<p class="p2">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;</p>
-<p class="p2">&lt;title&gt;Rehab Peroné 🦵&lt;/title&gt;</p>
-<p class="p2">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"&gt;&lt;/script&gt;</p>
-<p class="p2">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"&gt;&lt;/script&gt;</p>
-<p class="p2">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"&gt;&lt;/script&gt;</p>
-<p class="p2">&lt;style&gt;</p>
-<p class="p2"><span class="Apple-converted-space">  </span>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }</p>
-<p class="p2"><span class="Apple-converted-space">  </span>body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f5f5f5; min-height: 100vh; display: flex; justify-content: center; padding: 1rem; }</p>
-<p class="p2"><span class="Apple-converted-space">  </span>#root { width: 100%; max-width: 480px; }</p>
-<p class="p2"><span class="Apple-converted-space">  </span>button, textarea { font-family: inherit; }</p>
-<p class="p2">&lt;/style&gt;</p>
-<p class="p2">&lt;/head&gt;</p>
-<p class="p2">&lt;body&gt;</p>
-<p class="p2">&lt;div id="root"&gt;&lt;/div&gt;</p>
-<p class="p2">&lt;script type="text/babel"&gt;</p>
-<p class="p2">const { useState, useEffect, useRef } = React;</p>
-<p class="p1"><br></p>
-<p class="p2">const EXERCISES = [</p>
-<p class="p2"><span class="Apple-converted-space">  </span>{ id:1, name:"Caminar de puntillas", desc:"Varios paseos hasta cansarte", icon:"👣" },</p>
-<p class="p2"><span class="Apple-converted-space">  </span>{ id:2, name:"Caminar de talones", desc:"Varios paseos hasta cansarte", icon:"🦶" },</p>
-<p class="p2"><span class="Apple-converted-space">  </span>{ id:3, name:"Bailarina", desc:"Pies juntos → puntillas 2s → bajar → separar puntas → puntillas 2s → bajar", series:3, reps:10, icon:"🩰" },</p>
-<p class="p2"><span class="Apple-converted-space">  </span>{ id:4, name:"Pata coja (ojos abiertos)", desc:"Aguantar con cada pie", series:3, duration:30, icon:"🦵" },</p>
-<p class="p2"><span class="Apple-converted-space">  </span>{ id:5, name:"Pata coja (ojos cerrados)", desc:"Aguantar con cada pie", series:3, duration:30, icon:"👁️" },</p>
-<p class="p2"><span class="Apple-converted-space">  </span>{ id:6, name:"Pata coja + números 1-10", desc:"Dibuja los números del 1 al 10 gigantes con el pie en el aire", series:3, icon:"🔢" },</p>
-<p class="p2">];</p>
-<p class="p2">const SESSIONS = ["Mañana","Mediodía","Noche"];</p>
-<p class="p2">const SESSION_ICONS = ["🌅","☀️","🌙"];</p>
-<p class="p2">const DAY_NAMES = ["L","M","X","J","V","S","D"];</p>
-<p class="p2">const SESSION_COLORS = ["#378ADD","#E8A020","#9B59B6"];</p>
-<p class="p2">const SESSION_BG = ["#E6F1FB","#FEF3E2","#F3EAF9"];</p>
-<p class="p2">const HIST_COLORS = {1:"#378ADD",2:"#E8A020",3:"#1D9E75"};</p>
-<p class="p2">const HIST_LABELS = {1:"1 sesión",2:"2 sesiones",3:"3 sesiones"};</p>
-<p class="p2">const MONTH_NAMES = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];</p>
-<p class="p1"><br></p>
-<p class="p2">function getToday() {</p>
-<p class="p2"><span class="Apple-converted-space">  </span>const d = new Date();</p>
-<p class="p2"><span class="Apple-converted-space">  </span>return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");</p>
-<p class="p2">}</p>
-<p class="p2">function parseLocalDate(str) { const p=str.split("-"); return new Date(+p[0],+p[1]-1,+p[2]); }</p>
-<p class="p2">function formatDateLabel(str) { return parseLocalDate(str).toLocaleDateString("es-ES",{weekday:"long",day:"numeric",month:"long"}); }</p>
-<p class="p2">function getDayOfWeek(str) { return (parseLocalDate(str).getDay()+6)%7; }</p>
-<p class="p2">function getDaysInMonth(y,m) { return new Date(y,m+1,0).getDate(); }</p>
-<p class="p2">function dateStr(y,m,d) { return y+"-"+String(m+1).padStart(2,"0")+"-"+String(d).padStart(2,"0"); }</p>
-<p class="p1"><br></p>
-<p class="p2">const T = { card:"#fff", p:"#1a1a1a", s:"#666", t:"#999", bg:"#f5f5f5", b:"#e5e5e5" };</p>
-<p class="p1"><br></p>
-<p class="p2">function Timer({seconds}) {</p>
-<p class="p2"><span class="Apple-converted-space">  </span>const [left,setLeft]=useState(seconds), [running,setRunning]=useState(false), ref=useRef();</p>
-<p class="p2"><span class="Apple-converted-space">  </span>useEffect(()=&gt;{ if(running&amp;&amp;left&gt;0){ref.current=setInterval(()=&gt;setLeft(p=&gt;{if(p&lt;=1){clearInterval(ref.current);setRunning(false);return 0;}return p-1;}),1000);} return()=&gt;clearInterval(ref.current); },[running]);</p>
-<p class="p2"><span class="Apple-converted-space">  </span>const reset=()=&gt;{clearInterval(ref.current);setLeft(seconds);setRunning(false);};</p>
-<p class="p2"><span class="Apple-converted-space">  </span>const pct=((seconds-left)/seconds)*100, circ=2*Math.PI*17;</p>
-<p class="p2"><span class="Apple-converted-space">  </span>return (</p>
-<p class="p2"><span class="Apple-converted-space">    </span>&lt;div style={{display:"flex",alignItems:"center",gap:8,marginTop:6}}&gt;</p>
-<p class="p2"><span class="Apple-converted-space">      </span>&lt;div style={{position:"relative",width:42,height:42}}&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span>&lt;svg width="42" height="42" style={{transform:"rotate(-90deg)"}}&gt;</p>
-<p class="p2"><span class="Apple-converted-space">          </span>&lt;circle cx="21" cy="21" r="17" fill="none" stroke="#e5e5e5" strokeWidth="3"/&gt;</p>
-<p class="p2"><span class="Apple-converted-space">          </span>&lt;circle cx="21" cy="21" r="17" fill="none" stroke={left===0?"#1D9E75":"#378ADD"} strokeWidth="3" strokeDasharray={String(circ)} strokeDashoffset={String(circ*(1-pct/100))} style={{transition:"stroke-dashoffset 1s linear"}}/&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span>&lt;/svg&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span>&lt;span style={{position:"absolute",inset:0,display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:500}}&gt;{left}s&lt;/span&gt;</p>
-<p class="p2"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">      </span>&lt;button onClick={()=&gt;setRunning(r=&gt;!r)} style={{fontSize:12,padding:"3px 10px",borderRadius:6,border:"1px solid #ddd",background:T.bg,cursor:"pointer"}}&gt;{running?"⏸":left===0?"✓":"▶"}&lt;/button&gt;</p>
-<p class="p2"><span class="Apple-converted-space">      </span>{left&lt;seconds&amp;&amp;&lt;button onClick={reset} style={{fontSize:12,padding:"3px 8px",borderRadius:6,border:"1px solid #ddd",background:"transparent",cursor:"pointer",color:T.s}}&gt;↺&lt;/button&gt;}</p>
-<p class="p2"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">  </span>);</p>
-<p class="p2">}</p>
-<p class="p1"><br></p>
-<p class="p2">function ExerciseCard({ex,checked,note,onToggle,onNote}) {</p>
-<p class="p2"><span class="Apple-converted-space">  </span>const [showNote,setShowNote]=useState(false);</p>
-<p class="p2"><span class="Apple-converted-space">  </span>const doneByNote=note&amp;&amp;note.trim().length&gt;0, isDone=checked||doneByNote;</p>
-<p class="p2"><span class="Apple-converted-space">  </span>return (</p>
-<p class="p2"><span class="Apple-converted-space">    </span>&lt;div style={{background:isDone?"#f0faf5":T.card,border:"1px solid "+(isDone?"#a8dfc5":T.b),borderRadius:12,padding:"12px 14px",marginBottom:8}}&gt;</p>
-<p class="p2"><span class="Apple-converted-space">      </span>&lt;div style={{display:"flex",alignItems:"flex-start",gap:10}}&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span>&lt;button onClick={onToggle} style={{width:22,height:22,borderRadius:5,border:"2px solid "+(checked?"#1D9E75":"#ccc"),background:checked?"#1D9E75":T.card,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,marginTop:2,color:"#fff",fontSize:13,fontWeight:700}}&gt;{checked?"✓":""}&lt;/button&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span>&lt;div style={{flex:1}}&gt;</p>
-<p class="p2"><span class="Apple-converted-space">          </span>&lt;div style={{display:"flex",alignItems:"center",gap:6,flexWrap:"wrap"}}&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span>&lt;span style={{fontSize:16}}&gt;{ex.icon}&lt;/span&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span>&lt;span style={{fontWeight:500,fontSize:14,color:T.p,textDecoration:isDone?"line-through":"none"}}&gt;{ex.name}&lt;/span&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span>{doneByNote&amp;&amp;!checked&amp;&amp;&lt;span style={{fontSize:11,padding:"1px 7px",borderRadius:20,background:"#E1F5EE",color:"#1D9E75"}}&gt;por nota&lt;/span&gt;}</p>
-<p class="p2"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">          </span>&lt;p style={{fontSize:13,color:T.s,margin:"3px 0 0",lineHeight:1.4}}&gt;{ex.desc}&lt;/p&gt;</p>
-<p class="p2"><span class="Apple-converted-space">          </span>{ex.series&amp;&amp;(</p>
-<p class="p2"><span class="Apple-converted-space">            </span>&lt;div style={{display:"flex",gap:8,marginTop:6,flexWrap:"wrap",alignItems:"center"}}&gt;</p>
-<p class="p2"><span class="Apple-converted-space">              </span>{ex.reps&amp;&amp;&lt;span style={{fontSize:12,padding:"2px 8px",borderRadius:20,background:"#E6F1FB",color:"#185FA5"}}&gt;{ex.series} series × {ex.reps} reps&lt;/span&gt;}</p>
-<p class="p2"><span class="Apple-converted-space">              </span>{ex.duration&amp;&amp;&lt;span style={{fontSize:12,padding:"2px 8px",borderRadius:20,background:"#E6F1FB",color:"#185FA5"}}&gt;{ex.series} series × {ex.duration}s&lt;/span&gt;}</p>
-<p class="p2"><span class="Apple-converted-space">              </span>{!ex.reps&amp;&amp;!ex.duration&amp;&amp;&lt;span style={{fontSize:12,padding:"2px 8px",borderRadius:20,background:"#E6F1FB",color:"#185FA5"}}&gt;{ex.series} series&lt;/span&gt;}</p>
-<p class="p2"><span class="Apple-converted-space">              </span>{ex.duration&amp;&amp;&lt;Timer seconds={ex.duration}/&gt;}</p>
-<p class="p2"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">          </span>)}</p>
-<p class="p2"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">      </span>&lt;div style={{marginTop:8,paddingLeft:34}}&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span>&lt;button onClick={()=&gt;setShowNote(n=&gt;!n)} style={{fontSize:11,color:T.t,background:"none",border:"none",cursor:"pointer",padding:0}}&gt;</p>
-<p class="p2"><span class="Apple-converted-space">          </span>{showNote?"▲ ocultar nota":"✏️ añadir nota"}{doneByNote&amp;&amp;!showNote&amp;&amp;&lt;span style={{marginLeft:4,color:"#1D9E75"}}&gt;●&lt;/span&gt;}</p>
-<p class="p2"><span class="Apple-converted-space">        </span>&lt;/button&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span>{showNote&amp;&amp;(</p>
-<p class="p2"><span class="Apple-converted-space">          </span>&lt;div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span>&lt;textarea value={note} onChange={e=&gt;onNote(e.target.value)} placeholder="Si no pudiste hacerlo, explica por qué — contará como completado..." rows={2}</p>
-<p class="p2"><span class="Apple-converted-space">              </span>style={{width:"100%",marginTop:4,fontSize:13,borderRadius:6,border:"1px solid #ddd",padding:"6px 8px",resize:"none",background:T.bg,color:T.p}}/&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span>{doneByNote&amp;&amp;&lt;p style={{fontSize:11,color:"#1D9E75",margin:"2px 0 0"}}&gt;✓ Nota guardada — ejercicio contará como completado&lt;/p&gt;}</p>
-<p class="p2"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span>)}</p>
-<p class="p2"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">  </span>);</p>
-<p class="p2">}</p>
-<p class="p1"><br></p>
-<p class="p2">function DayDetail({day,checked,notes,isExDone,onClose}) {</p>
-<p class="p2"><span class="Apple-converted-space">  </span>return (</p>
-<p class="p2"><span class="Apple-converted-space">    </span>&lt;div style={{marginTop:12,borderRadius:12,border:"1px solid #e5e5e5",overflow:"hidden"}}&gt;</p>
-<p class="p2"><span class="Apple-converted-space">      </span>&lt;div style={{padding:"10px 14px",background:T.bg,borderBottom:"1px solid #e5e5e5",display:"flex",alignItems:"center",justifyContent:"space-between"}}&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span>&lt;span style={{fontSize:13,fontWeight:500,color:T.p,textTransform:"capitalize"}}&gt;{formatDateLabel(day)}&lt;/span&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span>&lt;button onClick={onClose} style={{fontSize:12,background:"none",border:"none",cursor:"pointer",color:T.t}}&gt;✕&lt;/button&gt;</p>
-<p class="p2"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">      </span>{SESSIONS.map((s,si)=&gt;{</p>
-<p class="p2"><span class="Apple-converted-space">        </span>const k=day+"-"+si, sC=checked[k]||{}, sN=notes[k]||{};</p>
-<p class="p2"><span class="Apple-converted-space">        </span>const count=EXERCISES.filter(ex=&gt;isExDone(day,si,ex.id)).length, complete=count===EXERCISES.length;</p>
-<p class="p2"><span class="Apple-converted-space">        </span>return (</p>
-<p class="p2"><span class="Apple-converted-space">          </span>&lt;div key={si} style={{borderBottom:si&lt;2?"1px solid #e5e5e5":"none"}}&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span>&lt;div style={{padding:"8px 14px",display:"flex",alignItems:"center",gap:8,background:complete?"#f0faf5":T.card}}&gt;</p>
-<p class="p2"><span class="Apple-converted-space">              </span>&lt;span style={{fontSize:14}}&gt;{SESSION_ICONS[si]}&lt;/span&gt;</p>
-<p class="p2"><span class="Apple-converted-space">              </span>&lt;span style={{fontSize:13,fontWeight:500,color:complete?"#1D9E75":T.p}}&gt;{s}&lt;/span&gt;</p>
-<p class="p2"><span class="Apple-converted-space">              </span>&lt;span style={{fontSize:12,color:complete?"#1D9E75":T.s,marginLeft:"auto"}}&gt;{count}/{EXERCISES.length} {complete?"✓":""}&lt;/span&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span>{EXERCISES.map(ex=&gt;{</p>
-<p class="p2"><span class="Apple-converted-space">              </span>const done=isExDone(day,si,ex.id), note=sN[ex.id]||"", byNote=note.trim().length&gt;0&amp;&amp;!sC[ex.id];</p>
-<p class="p2"><span class="Apple-converted-space">              </span>if(!done&amp;&amp;!note) return null;</p>
-<p class="p2"><span class="Apple-converted-space">              </span>return (</p>
-<p class="p2"><span class="Apple-converted-space">                </span>&lt;div key={ex.id} style={{padding:"6px 14px 6px 36px",background:T.card,borderTop:"1px solid #e5e5e5"}}&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                  </span>&lt;div style={{display:"flex",alignItems:"center",gap:6}}&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                    </span>&lt;span style={{fontSize:13,color:done?"#1D9E75":T.t}}&gt;{done?"✓":"–"}&lt;/span&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                    </span>&lt;span style={{fontSize:13,color:T.p}}&gt;{ex.icon} {ex.name}&lt;/span&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                    </span>{byNote&amp;&amp;&lt;span style={{fontSize:11,padding:"1px 6px",borderRadius:20,background:"#E1F5EE",color:"#1D9E75"}}&gt;por nota&lt;/span&gt;}</p>
-<p class="p2"><span class="Apple-converted-space">                  </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                  </span>{note&amp;&amp;&lt;p style={{fontSize:12,color:T.s,margin:"3px 0 0",fontStyle:"italic"}}&gt;"{note}"&lt;/p&gt;}</p>
-<p class="p2"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">              </span>);</p>
-<p class="p2"><span class="Apple-converted-space">            </span>})}</p>
-<p class="p2"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span>);</p>
-<p class="p2"><span class="Apple-converted-space">      </span>})}</p>
-<p class="p2"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">  </span>);</p>
-<p class="p2">}</p>
-<p class="p1"><br></p>
-<p class="p2">function App() {</p>
-<p class="p2"><span class="Apple-converted-space">  </span>const [today,setToday]=useState(getToday());</p>
-<p class="p2"><span class="Apple-converted-space">  </span>const [tab,setTab]=useState("hoy");</p>
-<p class="p2"><span class="Apple-converted-space">  </span>const [session,setSession]=useState(0);</p>
-<p class="p2"><span class="Apple-converted-space">  </span>const [checked,setChecked]=useState(()=&gt;{try{return JSON.parse(localStorage.getItem("rehab-checked")||"{}");}catch(e){return{};}});</p>
-<p class="p2"><span class="Apple-converted-space">  </span>const [notes,setNotes]=useState(()=&gt;{try{return JSON.parse(localStorage.getItem("rehab-notes")||"{}");}catch(e){return{};}});</p>
-<p class="p2"><span class="Apple-converted-space">  </span>const [selectedDay,setSelectedDay]=useState(null);</p>
-<p class="p2"><span class="Apple-converted-space">  </span>const tp=today.split("-");</p>
-<p class="p2"><span class="Apple-converted-space">  </span>const [viewYear,setViewYear]=useState(+tp[0]);</p>
-<p class="p2"><span class="Apple-converted-space">  </span>const [viewMonth,setViewMonth]=useState(+tp[1]-1);</p>
-<p class="p1"><br></p>
-<p class="p2"><span class="Apple-converted-space">  </span>useEffect(()=&gt;{</p>
-<p class="p2"><span class="Apple-converted-space">    </span>const iv=setInterval(()=&gt;{ const nd=getToday(); setToday(p=&gt;{if(p!==nd){setSession(0);return nd;}return p;}); },60000);</p>
-<p class="p2"><span class="Apple-converted-space">    </span>return()=&gt;clearInterval(iv);</p>
-<p class="p2"><span class="Apple-converted-space">  </span>},[]);</p>
-<p class="p2"><span class="Apple-converted-space">  </span>useEffect(()=&gt;{try{localStorage.setItem("rehab-checked",JSON.stringify(checked));}catch(e){}},[checked]);</p>
-<p class="p2"><span class="Apple-converted-space">  </span>useEffect(()=&gt;{try{localStorage.setItem("rehab-notes",JSON.stringify(notes));}catch(e){}},[notes]);</p>
-<p class="p1"><br></p>
-<p class="p2"><span class="Apple-converted-space">  </span>function isExDone(day,sess,exId) {</p>
-<p class="p2"><span class="Apple-converted-space">    </span>const k=day+"-"+sess;</p>
-<p class="p2"><span class="Apple-converted-space">    </span>return !!(checked[k]&amp;&amp;checked[k][exId])||(notes[k]&amp;&amp;notes[k][exId]&amp;&amp;notes[k][exId].trim().length&gt;0);</p>
-<p class="p2"><span class="Apple-converted-space">  </span>}</p>
-<p class="p2"><span class="Apple-converted-space">  </span>function isSessionComplete(day,sess){return EXERCISES.every(ex=&gt;isExDone(day,sess,ex.id));}</p>
-<p class="p2"><span class="Apple-converted-space">  </span>function sessionsForDay(day){let c=0;for(let i=0;i&lt;3;i++)if(isSessionComplete(day,i))c++;return c;}</p>
-<p class="p1"><br></p>
-<p class="p2"><span class="Apple-converted-space">  </span>const key=today+"-"+session;</p>
-<p class="p2"><span class="Apple-converted-space">  </span>const sC=checked[key]||{}, sN=notes[key]||{};</p>
-<p class="p2"><span class="Apple-converted-space">  </span>const done=EXERCISES.filter(ex=&gt;isExDone(today,session,ex.id)).length;</p>
-<p class="p2"><span class="Apple-converted-space">  </span>const pct=Math.round(done/EXERCISES.length*100);</p>
-<p class="p1"><br></p>
-<p class="p2"><span class="Apple-converted-space">  </span>function toggleEx(id){setChecked(c=&gt;{const p=c[key]||{};return{...c,[key]:{...p,[id]:!p[id]}};}); }</p>
-<p class="p2"><span class="Apple-converted-space">  </span>function setNote(id,val){setNotes(n=&gt;{const p=n[key]||{};return{...n,[key]:{...p,[id]:val}};});}</p>
-<p class="p2"><span class="Apple-converted-space">  </span>function completeAll(){const a={};EXERCISES.forEach(e=&gt;a[e.id]=true);setChecked(c=&gt;({...c,[key]:a}));}</p>
-<p class="p2"><span class="Apple-converted-space">  </span>function uncompleteAll(){setChecked(c=&gt;({...c,[key]:{}}));setNotes(n=&gt;({...n,[key]:{}}));}</p>
-<p class="p1"><br></p>
-<p class="p2"><span class="Apple-converted-space">  </span>const nowY=+today.split("-")[0], nowM=+today.split("-")[1]-1;</p>
-<p class="p2"><span class="Apple-converted-space">  </span>const isCurrent=viewYear===nowY&amp;&amp;viewMonth===nowM;</p>
-<p class="p1"><br></p>
-<p class="p2"><span class="Apple-converted-space">  </span>function prevMonth(){if(viewMonth===0){setViewMonth(11);setViewYear(y=&gt;y-1);}else setViewMonth(m=&gt;m-1);setSelectedDay(null);}</p>
-<p class="p2"><span class="Apple-converted-space">  </span>function nextMonth(){if(isCurrent)return;if(viewMonth===11){setViewMonth(0);setViewYear(y=&gt;y+1);}else setViewMonth(m=&gt;m+1);setSelectedDay(null);}</p>
-<p class="p1"><br></p>
-<p class="p2"><span class="Apple-converted-space">  </span>const daysInMonth=getDaysInMonth(viewYear,viewMonth);</p>
-<p class="p2"><span class="Apple-converted-space">  </span>const firstDow=getDayOfWeek(dateStr(viewYear,viewMonth,1));</p>
-<p class="p1"><br></p>
-<p class="p2"><span class="Apple-converted-space">  </span>return (</p>
-<p class="p2"><span class="Apple-converted-space">    </span>&lt;div style={{padding:"1rem 0",fontFamily:"inherit"}}&gt;</p>
-<p class="p2"><span class="Apple-converted-space">      </span>&lt;div style={{marginBottom:16}}&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span>&lt;h2 style={{fontSize:18,fontWeight:500,margin:0,color:T.p}}&gt;Rehab peroné 🦵&lt;/h2&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span>&lt;p style={{fontSize:13,color:T.s,margin:"2px 0 0",textTransform:"capitalize"}}&gt;{formatDateLabel(today)}&lt;/p&gt;</p>
-<p class="p2"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><br></p>
-<p class="p2"><span class="Apple-converted-space">      </span>&lt;div style={{display:"flex",gap:6,marginBottom:16}}&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span>{["hoy","historial"].map(t=&gt;(</p>
-<p class="p2"><span class="Apple-converted-space">          </span>&lt;button key={t} onClick={()=&gt;setTab(t)} style={{flex:1,padding:"8px 0",borderRadius:8,border:"1px solid "+(tab===t?"#378ADD":"#ddd"),background:tab===t?"#E6F1FB":T.bg,color:tab===t?"#185FA5":T.s,cursor:"pointer",fontSize:13,fontWeight:tab===t?500:400}}&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span>{t==="hoy"?"Ejercicios de hoy":"Historial"}</p>
-<p class="p2"><span class="Apple-converted-space">          </span>&lt;/button&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span>))}</p>
-<p class="p2"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><br></p>
-<p class="p2"><span class="Apple-converted-space">      </span>{tab==="hoy"&amp;&amp;(</p>
-<p class="p2"><span class="Apple-converted-space">        </span>&lt;div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">          </span>&lt;div style={{display:"flex",gap:6,marginBottom:14}}&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span>{SESSIONS.map((s,i)=&gt;{</p>
-<p class="p2"><span class="Apple-converted-space">              </span>const complete=isSessionComplete(today,i),active=session===i;</p>
-<p class="p2"><span class="Apple-converted-space">              </span>return &lt;button key={i} onClick={()=&gt;setSession(i)} style={{flex:1,padding:"7px 4px",borderRadius:8,border:"2px solid "+(complete?"#1D9E75":active?SESSION_COLORS[i]:"#ddd"),background:complete?"#f0faf5":active?SESSION_BG[i]:T.bg,color:complete?"#1D9E75":active?SESSION_COLORS[i]:T.s,cursor:"pointer",fontSize:12,fontWeight:(complete||active)?500:400}}&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                </span>{SESSION_ICONS[i]} {s}{complete&amp;&amp;&lt;span style={{display:"block",fontSize:10}}&gt;✓&lt;/span&gt;}</p>
-<p class="p2"><span class="Apple-converted-space">              </span>&lt;/button&gt;;</p>
-<p class="p2"><span class="Apple-converted-space">            </span>})}</p>
-<p class="p2"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">          </span>&lt;div style={{background:T.bg,borderRadius:10,padding:"10px 14px",marginBottom:14,display:"flex",alignItems:"center",gap:12}}&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span>&lt;div style={{flex:1}}&gt;</p>
-<p class="p2"><span class="Apple-converted-space">              </span>&lt;div style={{fontSize:12,color:T.s,marginBottom:4}}&gt;{done}/{EXERCISES.length} ejercicios&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">              </span>&lt;div style={{height:6,borderRadius:3,background:"#ddd",overflow:"hidden"}}&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                </span>&lt;div style={{height:"100%",width:pct+"%",background:pct===100?"#1D9E75":SESSION_COLORS[session],transition:"width 0.3s",borderRadius:3}}/&gt;</p>
-<p class="p2"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span>&lt;span style={{fontSize:18,fontWeight:500,color:pct===100?"#1D9E75":T.p}}&gt;{pct}%&lt;/span&gt;</p>
-<p class="p2"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">          </span>{EXERCISES.map(ex=&gt;&lt;ExerciseCard key={ex.id} ex={ex} checked={!!sC[ex.id]} note={sN[ex.id]||""} onToggle={()=&gt;toggleEx(ex.id)} onNote={v=&gt;setNote(ex.id,v)}/&gt;)}</p>
-<p class="p2"><span class="Apple-converted-space">          </span>&lt;div style={{display:"flex",gap:8,marginTop:8}}&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span>{done&lt;EXERCISES.length&amp;&amp;&lt;button onClick={completeAll} style={{flex:1,padding:"10px 0",borderRadius:10,border:"1px solid #ddd",background:T.bg,color:T.s,cursor:"pointer",fontSize:13}}&gt;Marcar todo ✓&lt;/button&gt;}</p>
-<p class="p2"><span class="Apple-converted-space">            </span>{done&gt;0&amp;&amp;&lt;button onClick={uncompleteAll} style={{flex:1,padding:"10px 0",borderRadius:10,border:"1px solid #ddd",background:"transparent",color:T.t,cursor:"pointer",fontSize:13}}&gt;Desmarcar todo ✕&lt;/button&gt;}</p>
-<p class="p2"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">          </span>{pct===100&amp;&amp;&lt;div style={{marginTop:10,padding:"12px 14px",borderRadius:10,background:"#f0faf5",border:"1px solid #a8dfc5",textAlign:"center",color:"#1D9E75",fontSize:14,fontWeight:500}}&gt;¡Sesión de {SESSIONS[session].toLowerCase()} completada! 🎉&lt;/div&gt;}</p>
-<p class="p2"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">      </span>)}</p>
-<p class="p1"><br></p>
-<p class="p2"><span class="Apple-converted-space">      </span>{tab==="historial"&amp;&amp;(</p>
-<p class="p2"><span class="Apple-converted-space">        </span>&lt;div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">          </span>&lt;div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:12}}&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span>&lt;button onClick={prevMonth} style={{fontSize:22,background:"none",border:"none",cursor:"pointer",color:T.p,padding:"0 8px"}}&gt;‹&lt;/button&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span>&lt;span style={{fontSize:14,fontWeight:500,color:T.p}}&gt;{MONTH_NAMES[viewMonth]} {viewYear}&lt;/span&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span>&lt;button onClick={nextMonth} style={{fontSize:22,background:"none",border:"none",cursor:isCurrent?"not-allowed":"pointer",color:isCurrent?T.t:T.p,padding:"0 8px"}}&gt;›&lt;/button&gt;</p>
-<p class="p2"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">          </span>&lt;div style={{display:"grid",gridTemplateColumns:"repeat(7,1fr)",gap:5}}&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span>{DAY_NAMES.map(d=&gt;&lt;div key={d} style={{textAlign:"center",fontSize:11,color:T.t,paddingBottom:4}}&gt;{d}&lt;/div&gt;)}</p>
-<p class="p2"><span class="Apple-converted-space">            </span>{Array.from({length:firstDow},(_,i)=&gt;&lt;div key={"p"+i}/&gt;)}</p>
-<p class="p2"><span class="Apple-converted-space">            </span>{Array.from({length:daysInMonth},(_,i)=&gt;{</p>
-<p class="p2"><span class="Apple-converted-space">              </span>const d=dateStr(viewYear,viewMonth,i+1);</p>
-<p class="p2"><span class="Apple-converted-space">              </span>const n=sessionsForDay(d), isToday=d===today, isSel=d===selectedDay, isFuture=d&gt;today;</p>
-<p class="p2"><span class="Apple-converted-space">              </span>const bg=isFuture?"transparent":n&gt;0?HIST_COLORS[n]:isToday?"#E6F1FB":T.bg;</p>
-<p class="p2"><span class="Apple-converted-space">              </span>const tc=isFuture?T.t:n&gt;0?"#fff":isToday?"#185FA5":T.t;</p>
-<p class="p2"><span class="Apple-converted-space">              </span>return (</p>
-<p class="p2"><span class="Apple-converted-space">                </span>&lt;div key={d} onClick={()=&gt;{if(!isFuture)setSelectedDay(p=&gt;p===d?null:d);}}</p>
-<p class="p2"><span class="Apple-converted-space">                  </span>style={{aspectRatio:"1",borderRadius:6,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:1,background:bg,border:isSel?"2px solid #333":isToday?"2px solid #378ADD":"1px solid #e5e5e5",cursor:isFuture?"default":"pointer",opacity:isFuture?0.3:1}}&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                  </span>&lt;span style={{fontSize:10,color:tc,fontWeight:(n&gt;0||isToday)?500:400}}&gt;{i+1}&lt;/span&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                  </span>{n&gt;0&amp;&amp;&lt;span style={{fontSize:9,color:"#fff"}}&gt;{n}/3&lt;/span&gt;}</p>
-<p class="p2"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">              </span>);</p>
-<p class="p2"><span class="Apple-converted-space">            </span>})}</p>
-<p class="p2"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">          </span>&lt;div style={{display:"flex",gap:10,marginTop:10,flexWrap:"wrap"}}&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span>{[1,2,3].map(n=&gt;(</p>
-<p class="p2"><span class="Apple-converted-space">              </span>&lt;div key={n} style={{display:"flex",alignItems:"center",gap:5,fontSize:11,color:T.s}}&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                </span>&lt;div style={{width:12,height:12,borderRadius:3,background:HIST_COLORS[n]}}/&gt;{HIST_LABELS[n]}</p>
-<p class="p2"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span>))}</p>
-<p class="p2"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">          </span>{selectedDay&amp;&amp;&lt;DayDetail day={selectedDay} checked={checked} notes={notes} isExDone={isExDone} onClose={()=&gt;setSelectedDay(null)}/&gt;}</p>
-<p class="p2"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">      </span>)}</p>
-<p class="p2"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">  </span>);</p>
-<p class="p2">}</p>
-<p class="p1"><br></p>
-<p class="p2">ReactDOM.createRoot(document.getElementById("root")).render(&lt;App/&gt;);</p>
-<p class="p2">&lt;/script&gt;</p>
-<p class="p2">&lt;/body&gt;</p>
-<p class="p2">&lt;/html&gt;</p>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect, useRef } = React;
+
+const EXERCISES = [
+  { id:1, name:"Caminar de puntillas", desc:"Varios paseos hasta cansarte", icon:"👣" },
+  { id:2, name:"Caminar de talones", desc:"Varios paseos hasta cansarte", icon:"🦶" },
+  { id:3, name:"Bailarina", desc:"Pies juntos → puntillas 2s → bajar → separar puntas → puntillas 2s → bajar", series:3, reps:10, icon:"🩰" },
+  { id:4, name:"Pata coja (ojos abiertos)", desc:"Aguantar con cada pie", series:3, duration:30, icon:"🦵" },
+  { id:5, name:"Pata coja (ojos cerrados)", desc:"Aguantar con cada pie", series:3, duration:30, icon:"👁️" },
+  { id:6, name:"Pata coja + números 1-10", desc:"Dibuja los números del 1 al 10 gigantes con el pie en el aire", series:3, icon:"🔢" },
+];
+const SESSIONS = ["Mañana","Mediodía","Noche"];
+const SESSION_ICONS = ["🌅","☀️","🌙"];
+const DAY_NAMES = ["L","M","X","J","V","S","D"];
+const SESSION_COLORS = ["#378ADD","#E8A020","#9B59B6"];
+const SESSION_BG = ["#E6F1FB","#FEF3E2","#F3EAF9"];
+const HIST_COLORS = {1:"#378ADD",2:"#E8A020",3:"#1D9E75"};
+const HIST_LABELS = {1:"1 sesión",2:"2 sesiones",3:"3 sesiones"};
+const MONTH_NAMES = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+
+function getToday() {
+  const d = new Date();
+  return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+}
+function parseLocalDate(str) { const p=str.split("-"); return new Date(+p[0],+p[1]-1,+p[2]); }
+function formatDateLabel(str) { return parseLocalDate(str).toLocaleDateString("es-ES",{weekday:"long",day:"numeric",month:"long"}); }
+function getDayOfWeek(str) { return (parseLocalDate(str).getDay()+6)%7; }
+function getDaysInMonth(y,m) { return new Date(y,m+1,0).getDate(); }
+function dateStr(y,m,d) { return y+"-"+String(m+1).padStart(2,"0")+"-"+String(d).padStart(2,"0"); }
+
+const T = { card:"#fff", p:"#1a1a1a", s:"#666", t:"#999", bg:"#f5f5f5", b:"#e5e5e5" };
+
+function Timer({seconds}) {
+  const [left,setLeft]=useState(seconds), [running,setRunning]=useState(false), ref=useRef();
+  useEffect(()=>{ if(running&&left>0){ref.current=setInterval(()=>setLeft(p=>{if(p<=1){clearInterval(ref.current);setRunning(false);return 0;}return p-1;}),1000);} return()=>clearInterval(ref.current); },[running]);
+  const reset=()=>{clearInterval(ref.current);setLeft(seconds);setRunning(false);};
+  const pct=((seconds-left)/seconds)*100, circ=2*Math.PI*17;
+  return (
+    <div style={{display:"flex",alignItems:"center",gap:8,marginTop:6}}>
+      <div style={{position:"relative",width:42,height:42}}>
+        <svg width="42" height="42" style={{transform:"rotate(-90deg)"}}>
+          <circle cx="21" cy="21" r="17" fill="none" stroke="#e5e5e5" strokeWidth="3"/>
+          <circle cx="21" cy="21" r="17" fill="none" stroke={left===0?"#1D9E75":"#378ADD"} strokeWidth="3" strokeDasharray={String(circ)} strokeDashoffset={String(circ*(1-pct/100))} style={{transition:"stroke-dashoffset 1s linear"}}/>
+        </svg>
+        <span style={{position:"absolute",inset:0,display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:500}}>{left}s</span>
+      </div>
+      <button onClick={()=>setRunning(r=>!r)} style={{fontSize:12,padding:"3px 10px",borderRadius:6,border:"1px solid #ddd",background:T.bg,cursor:"pointer"}}>{running?"⏸":left===0?"✓":"▶"}</button>
+      {left<seconds&&<button onClick={reset} style={{fontSize:12,padding:"3px 8px",borderRadius:6,border:"1px solid #ddd",background:"transparent",cursor:"pointer",color:T.s}}>↺</button>}
+    </div>
+  );
+}
+
+function ExerciseCard({ex,checked,note,onToggle,onNote}) {
+  const [showNote,setShowNote]=useState(false);
+  const doneByNote=note&&note.trim().length>0, isDone=checked||doneByNote;
+  return (
+    <div style={{background:isDone?"#f0faf5":T.card,border:"1px solid "+(isDone?"#a8dfc5":T.b),borderRadius:12,padding:"12px 14px",marginBottom:8}}>
+      <div style={{display:"flex",alignItems:"flex-start",gap:10}}>
+        <button onClick={onToggle} style={{width:22,height:22,borderRadius:5,border:"2px solid "+(checked?"#1D9E75":"#ccc"),background:checked?"#1D9E75":T.card,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,marginTop:2,color:"#fff",fontSize:13,fontWeight:700}}>{checked?"✓":""}</button>
+        <div style={{flex:1}}>
+          <div style={{display:"flex",alignItems:"center",gap:6,flexWrap:"wrap"}}>
+            <span style={{fontSize:16}}>{ex.icon}</span>
+            <span style={{fontWeight:500,fontSize:14,color:T.p,textDecoration:isDone?"line-through":"none"}}>{ex.name}</span>
+            {doneByNote&&!checked&&<span style={{fontSize:11,padding:"1px 7px",borderRadius:20,background:"#E1F5EE",color:"#1D9E75"}}>por nota</span>}
+          </div>
+          <p style={{fontSize:13,color:T.s,margin:"3px 0 0",lineHeight:1.4}}>{ex.desc}</p>
+          {ex.series&&(
+            <div style={{display:"flex",gap:8,marginTop:6,flexWrap:"wrap",alignItems:"center"}}>
+              {ex.reps&&<span style={{fontSize:12,padding:"2px 8px",borderRadius:20,background:"#E6F1FB",color:"#185FA5"}}>{ex.series} series × {ex.reps} reps</span>}
+              {ex.duration&&<span style={{fontSize:12,padding:"2px 8px",borderRadius:20,background:"#E6F1FB",color:"#185FA5"}}>{ex.series} series × {ex.duration}s</span>}
+              {!ex.reps&&!ex.duration&&<span style={{fontSize:12,padding:"2px 8px",borderRadius:20,background:"#E6F1FB",color:"#185FA5"}}>{ex.series} series</span>}
+              {ex.duration&&<Timer seconds={ex.duration}/>}
+            </div>
+          )}
+        </div>
+      </div>
+      <div style={{marginTop:8,paddingLeft:34}}>
+        <button onClick={()=>setShowNote(n=>!n)} style={{fontSize:11,color:T.t,background:"none",border:"none",cursor:"pointer",padding:0}}>
+          {showNote?"▲ ocultar nota":"✏️ añadir nota"}{doneByNote&&!showNote&&<span style={{marginLeft:4,color:"#1D9E75"}}>●</span>}
+        </button>
+        {showNote&&(
+          <div>
+            <textarea value={note} onChange={e=>onNote(e.target.value)} placeholder="Si no pudiste hacerlo, explica por qué — contará como completado..." rows={2}
+              style={{width:"100%",marginTop:4,fontSize:13,borderRadius:6,border:"1px solid #ddd",padding:"6px 8px",resize:"none",background:T.bg,color:T.p}}/>
+            {doneByNote&&<p style={{fontSize:11,color:"#1D9E75",margin:"2px 0 0"}}>✓ Nota guardada — ejercicio contará como completado</p>}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function DayDetail({day,checked,notes,isExDone,onClose}) {
+  return (
+    <div style={{marginTop:12,borderRadius:12,border:"1px solid #e5e5e5",overflow:"hidden"}}>
+      <div style={{padding:"10px 14px",background:T.bg,borderBottom:"1px solid #e5e5e5",display:"flex",alignItems:"center",justifyContent:"space-between"}}>
+        <span style={{fontSize:13,fontWeight:500,color:T.p,textTransform:"capitalize"}}>{formatDateLabel(day)}</span>
+        <button onClick={onClose} style={{fontSize:12,background:"none",border:"none",cursor:"pointer",color:T.t}}>✕</button>
+      </div>
+      {SESSIONS.map((s,si)=>{
+        const k=day+"-"+si, sC=checked[k]||{}, sN=notes[k]||{};
+        const count=EXERCISES.filter(ex=>isExDone(day,si,ex.id)).length, complete=count===EXERCISES.length;
+        return (
+          <div key={si} style={{borderBottom:si<2?"1px solid #e5e5e5":"none"}}>
+            <div style={{padding:"8px 14px",display:"flex",alignItems:"center",gap:8,background:complete?"#f0faf5":T.card}}>
+              <span style={{fontSize:14}}>{SESSION_ICONS[si]}</span>
+              <span style={{fontSize:13,fontWeight:500,color:complete?"#1D9E75":T.p}}>{s}</span>
+              <span style={{fontSize:12,color:complete?"#1D9E75":T.s,marginLeft:"auto"}}>{count}/{EXERCISES.length} {complete?"✓":""}</span>
+            </div>
+            {EXERCISES.map(ex=>{
+              const done=isExDone(day,si,ex.id), note=sN[ex.id]||"", byNote=note.trim().length>0&&!sC[ex.id];
+              if(!done&&!note) return null;
+              return (
+                <div key={ex.id} style={{padding:"6px 14px 6px 36px",background:T.card,borderTop:"1px solid #e5e5e5"}}>
+                  <div style={{display:"flex",alignItems:"center",gap:6}}>
+                    <span style={{fontSize:13,color:done?"#1D9E75":T.t}}>{done?"✓":"–"}</span>
+                    <span style={{fontSize:13,color:T.p}}>{ex.icon} {ex.name}</span>
+                    {byNote&&<span style={{fontSize:11,padding:"1px 6px",borderRadius:20,background:"#E1F5EE",color:"#1D9E75"}}>por nota</span>}
+                  </div>
+                  {note&&<p style={{fontSize:12,color:T.s,margin:"3px 0 0",fontStyle:"italic"}}>"{note}"</p>}
+                </div>
+              );
+            })}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function App() {
+  const [today,setToday]=useState(getToday());
+  const [tab,setTab]=useState("hoy");
+  const [session,setSession]=useState(0);
+  const [checked,setChecked]=useState(()=>{try{return JSON.parse(localStorage.getItem("rehab-checked")||"{}");}catch(e){return{};}});
+  const [notes,setNotes]=useState(()=>{try{return JSON.parse(localStorage.getItem("rehab-notes")||"{}");}catch(e){return{};}});
+  const [selectedDay,setSelectedDay]=useState(null);
+  const tp=today.split("-");
+  const [viewYear,setViewYear]=useState(+tp[0]);
+  const [viewMonth,setViewMonth]=useState(+tp[1]-1);
+
+  useEffect(()=>{
+    const iv=setInterval(()=>{ const nd=getToday(); setToday(p=>{if(p!==nd){setSession(0);return nd;}return p;}); },60000);
+    return()=>clearInterval(iv);
+  },[]);
+  useEffect(()=>{try{localStorage.setItem("rehab-checked",JSON.stringify(checked));}catch(e){}},[checked]);
+  useEffect(()=>{try{localStorage.setItem("rehab-notes",JSON.stringify(notes));}catch(e){}},[notes]);
+
+  function isExDone(day,sess,exId) {
+    const k=day+"-"+sess;
+    return !!(checked[k]&&checked[k][exId])||(notes[k]&&notes[k][exId]&&notes[k][exId].trim().length>0);
+  }
+  function isSessionComplete(day,sess){return EXERCISES.every(ex=>isExDone(day,sess,ex.id));}
+  function sessionsForDay(day){let c=0;for(let i=0;i<3;i++)if(isSessionComplete(day,i))c++;return c;}
+
+  const key=today+"-"+session;
+  const sC=checked[key]||{}, sN=notes[key]||{};
+  const done=EXERCISES.filter(ex=>isExDone(today,session,ex.id)).length;
+  const pct=Math.round(done/EXERCISES.length*100);
+
+  function toggleEx(id){setChecked(c=>{const p=c[key]||{};return{...c,[key]:{...p,[id]:!p[id]}};}); }
+  function setNote(id,val){setNotes(n=>{const p=n[key]||{};return{...n,[key]:{...p,[id]:val}};});}
+  function completeAll(){const a={};EXERCISES.forEach(e=>a[e.id]=true);setChecked(c=>({...c,[key]:a}));}
+  function uncompleteAll(){setChecked(c=>({...c,[key]:{}}));setNotes(n=>({...n,[key]:{}}));}
+
+  const nowY=+today.split("-")[0], nowM=+today.split("-")[1]-1;
+  const isCurrent=viewYear===nowY&&viewMonth===nowM;
+
+  function prevMonth(){if(viewMonth===0){setViewMonth(11);setViewYear(y=>y-1);}else setViewMonth(m=>m-1);setSelectedDay(null);}
+  function nextMonth(){if(isCurrent)return;if(viewMonth===11){setViewMonth(0);setViewYear(y=>y+1);}else setViewMonth(m=>m+1);setSelectedDay(null);}
+
+  const daysInMonth=getDaysInMonth(viewYear,viewMonth);
+  const firstDow=getDayOfWeek(dateStr(viewYear,viewMonth,1));
+
+  return (
+    <div style={{padding:"1rem 0",fontFamily:"inherit"}}>
+      <div style={{marginBottom:16}}>
+        <h2 style={{fontSize:18,fontWeight:500,margin:0,color:T.p}}>Rehab peroné 🦵</h2>
+        <p style={{fontSize:13,color:T.s,margin:"2px 0 0",textTransform:"capitalize"}}>{formatDateLabel(today)}</p>
+      </div>
+
+      <div style={{display:"flex",gap:6,marginBottom:16}}>
+        {["hoy","historial"].map(t=>(
+          <button key={t} onClick={()=>setTab(t)} style={{flex:1,padding:"8px 0",borderRadius:8,border:"1px solid "+(tab===t?"#378ADD":"#ddd"),background:tab===t?"#E6F1FB":T.bg,color:tab===t?"#185FA5":T.s,cursor:"pointer",fontSize:13,fontWeight:tab===t?500:400}}>
+            {t==="hoy"?"Ejercicios de hoy":"Historial"}
+          </button>
+        ))}
+      </div>
+
+      {tab==="hoy"&&(
+        <div>
+          <div style={{display:"flex",gap:6,marginBottom:14}}>
+            {SESSIONS.map((s,i)=>{
+              const complete=isSessionComplete(today,i),active=session===i;
+              return <button key={i} onClick={()=>setSession(i)} style={{flex:1,padding:"7px 4px",borderRadius:8,border:"2px solid "+(complete?"#1D9E75":active?SESSION_COLORS[i]:"#ddd"),background:complete?"#f0faf5":active?SESSION_BG[i]:T.bg,color:complete?"#1D9E75":active?SESSION_COLORS[i]:T.s,cursor:"pointer",fontSize:12,fontWeight:(complete||active)?500:400}}>
+                {SESSION_ICONS[i]} {s}{complete&&<span style={{display:"block",fontSize:10}}>✓</span>}
+              </button>;
+            })}
+          </div>
+          <div style={{background:T.bg,borderRadius:10,padding:"10px 14px",marginBottom:14,display:"flex",alignItems:"center",gap:12}}>
+            <div style={{flex:1}}>
+              <div style={{fontSize:12,color:T.s,marginBottom:4}}>{done}/{EXERCISES.length} ejercicios</div>
+              <div style={{height:6,borderRadius:3,background:"#ddd",overflow:"hidden"}}>
+                <div style={{height:"100%",width:pct+"%",background:pct===100?"#1D9E75":SESSION_COLORS[session],transition:"width 0.3s",borderRadius:3}}/>
+              </div>
+            </div>
+            <span style={{fontSize:18,fontWeight:500,color:pct===100?"#1D9E75":T.p}}>{pct}%</span>
+          </div>
+          {EXERCISES.map(ex=><ExerciseCard key={ex.id} ex={ex} checked={!!sC[ex.id]} note={sN[ex.id]||""} onToggle={()=>toggleEx(ex.id)} onNote={v=>setNote(ex.id,v)}/>)}
+          <div style={{display:"flex",gap:8,marginTop:8}}>
+            {done<EXERCISES.length&&<button onClick={completeAll} style={{flex:1,padding:"10px 0",borderRadius:10,border:"1px solid #ddd",background:T.bg,color:T.s,cursor:"pointer",fontSize:13}}>Marcar todo ✓</button>}
+            {done>0&&<button onClick={uncompleteAll} style={{flex:1,padding:"10px 0",borderRadius:10,border:"1px solid #ddd",background:"transparent",color:T.t,cursor:"pointer",fontSize:13}}>Desmarcar todo ✕</button>}
+          </div>
+          {pct===100&&<div style={{marginTop:10,padding:"12px 14px",borderRadius:10,background:"#f0faf5",border:"1px solid #a8dfc5",textAlign:"center",color:"#1D9E75",fontSize:14,fontWeight:500}}>¡Sesión de {SESSIONS[session].toLowerCase()} completada! 🎉</div>}
+        </div>
+      )}
+
+      {tab==="historial"&&(
+        <div>
+          <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:12}}>
+            <button onClick={prevMonth} style={{fontSize:22,background:"none",border:"none",cursor:"pointer",color:T.p,padding:"0 8px"}}>‹</button>
+            <span style={{fontSize:14,fontWeight:500,color:T.p}}>{MONTH_NAMES[viewMonth]} {viewYear}</span>
+            <button onClick={nextMonth} style={{fontSize:22,background:"none",border:"none",cursor:isCurrent?"not-allowed":"pointer",color:isCurrent?T.t:T.p,padding:"0 8px"}}>›</button>
+          </div>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(7,1fr)",gap:5}}>
+            {DAY_NAMES.map(d=><div key={d} style={{textAlign:"center",fontSize:11,color:T.t,paddingBottom:4}}>{d}</div>)}
+            {Array.from({length:firstDow},(_,i)=><div key={"p"+i}/>)}
+            {Array.from({length:daysInMonth},(_,i)=>{
+              const d=dateStr(viewYear,viewMonth,i+1);
+              const n=sessionsForDay(d), isToday=d===today, isSel=d===selectedDay, isFuture=d>today;
+              const bg=isFuture?"transparent":n>0?HIST_COLORS[n]:isToday?"#E6F1FB":T.bg;
+              const tc=isFuture?T.t:n>0?"#fff":isToday?"#185FA5":T.t;
+              return (
+                <div key={d} onClick={()=>{if(!isFuture)setSelectedDay(p=>p===d?null:d);}}
+                  style={{aspectRatio:"1",borderRadius:6,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:1,background:bg,border:isSel?"2px solid #333":isToday?"2px solid #378ADD":"1px solid #e5e5e5",cursor:isFuture?"default":"pointer",opacity:isFuture?0.3:1}}>
+                  <span style={{fontSize:10,color:tc,fontWeight:(n>0||isToday)?500:400}}>{i+1}</span>
+                  {n>0&&<span style={{fontSize:9,color:"#fff"}}>{n}/3</span>}
+                </div>
+              );
+            })}
+          </div>
+          <div style={{display:"flex",gap:10,marginTop:10,flexWrap:"wrap"}}>
+            {[1,2,3].map(n=>(
+              <div key={n} style={{display:"flex",alignItems:"center",gap:5,fontSize:11,color:T.s}}>
+                <div style={{width:12,height:12,borderRadius:3,background:HIST_COLORS[n]}}/>{HIST_LABELS[n]}
+              </div>
+            ))}
+          </div>
+          {selectedDay&&<DayDetail day={selectedDay} checked={checked} notes={notes} isExDone={isExDone} onClose={()=>setSelectedDay(null)}/>}
+        </div>
+      )}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
 </body>
 </html>
